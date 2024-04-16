@@ -1,0 +1,26 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body_id 'admin_post_show' %}
+
+{% block main %}
+    <h1>Hello!</h1>
+
+    <p class="post-metadata">
+        <span class="metadata"><i class="fa fa-calendar"></i> </span>
+        <span class="metadata"><i class="fa fa-user"></i> </span>
+    </p>
+
+    <div class="well">
+        <p class="m-b-0"><strong>{{ SMScontent }}</strong>: </p>
+    </div>
+
+    
+{% endblock %}
+
+{% block sidebar %}
+    
+
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

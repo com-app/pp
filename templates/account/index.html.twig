@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accounts Managment{% endblock %}
+
+{% block body %}
+<div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Manage</a></li>
+          <li class="breadcrumb-item active">Accounts</li>
+        </ol>
+      </nav>
+</div><!-- End Page Title -->
+<div id="alert-zone" class="col col-sm-3 position-absolute" style="z-index:1000;left:70%;top:7%;">
+</div>
+
+<div class="card">
+ <div class="card-body">
+    <div class="row mb-3">
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <!-- Transactions Card -->
+                <div class="filter">
+                  <span class="fs-5">Summary  </span>
+                       <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots fs-4"></i></a>
+                          <ul class="dropdown-menu dropdown-menu-end">
+                            <li class="dropdown-header text-start">
+                                <h6>Filter</h6>
+                             </li>
+                            <li><a class="dropdown-item" href="#">Today</a></li>
+                            <li><a class="dropdown-item" href="#">This Week</a></li>
+                            <li><a class="dropdown-item" href="#">This Month</a></li>
+                         </ul>
+                </div>
+  <table id="accounting-sum-dt" class="stripe table-hover order-column compact" style="width:100%;margin-left:5em">
+                       <thead>
+                          <tr>
+                             <th>Acct N°</th>
+                             <th>Owner Name</th>
+                             <th>Total Credit</th>
+                             <th>Total Debit</th>
+                             <th>Balance.</th>
+                             <th>Bal. Type</th>
+                             <th>Action</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>Acct N°</th>
+                          <th>Owner Name</th>
+                          <th>Total Credit</th>
+                          <th>Total Debit</th>
+                          <th>Balance</th>
+                          <th>Bal. Type</th>
+                          <th>Action</th>
+                      </tr>
+                      </tfoot>
+                </table>
+         </div>
+    </div>
+</div>         
+</div>
+<div>
+
+</div>
+ <div class="modal fade" id="account-moov-modal" tabindex="-1" data-bs-backdrop="false">
+      <div class="modal-dialog modal-dialog-scrollable modal-md">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-danger text-bold" id="acct-mv-title"></h6>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="account-moov-modal-body">
+                    </div>          
+                    <div class="modal-footer">
+                    </div>
+                  </div>
+          </div>
+</div>
+ <div class="modal fade" id="account-more-modal" tabindex="-1" data-bs-toggle="modal" data-bs-backdrop="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title text-danger text-bold" id="acct-more-title"></h6>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="account-more-modal-body">
+                      <div id="acct-more-modal-body-top"></div>
+                      <div class="card">
+                       <div class="card-body">
+                      <table id="acct-one-sum-dt" class="row-border  table-hover table-striped" style="width:100%">
+                       <thead>
+                          <tr>
+                             <th>MV N°</th>
+                             <th>Moov type</th>
+                             <th>Amount</th>
+                             <th>Date</th>
+                             <th>Comment</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>MV N°</th>
+                          <th>Moov type</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>Comment</th>
+                      </tr>
+                      </tfoot>
+                </table>
+                    </div>     
+                    </div>
+                  </div>       
+                    <div class="modal-footer">
+                          <button type="button" class="btn btn-primary btn-sm">Ok</button>
+                          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+          </div>
+</div>
+{% if app.user %}
+       <input type='hidden' id="user-name" name="user_name" value="{{ app.user.fullname }}"/> 
+       <input type='hidden' id="app-user-id"   name="app_user_id" value="{{ app.user.id }}"/>
+{% endif %}
+                
+{% endblock %}
+  
+

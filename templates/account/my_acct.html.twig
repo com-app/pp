@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Manage my account{% endblock %}
+
+{% block body %}
+<div class="pagetitle">
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">My</a></li>
+          <li class="breadcrumb-item active">Accounting</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+<div class="card">
+<div class="card-body">
+<div id="alert-zone" class="col col-sm-3 position-absolute" style="z-index:1000;left:70%;top:7%;">
+    </div>
+ <h4 class="card-title">Summary <span class="text-black">Account#00{{ acct_id }}{{ app.user.id }}{#{ date_interval}#} <br/></span></h4>
+ <hr/>  
+  
+  <!-- Vertical Pills Tabs -->
+              <div class="d-flex align-items-start">
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Resume</button>
+                  <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"   onClick="showMyAcctMore({{ acct_id }});">Full</button>
+                </div>
+                <div class="tab-content" id="v-pills-tabContent">
+                  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                  <table id="my-acct-sum-dt" class="stripe compact" style="width:100%;margin-left:5em">
+                       <thead>
+                          <tr>
+                             <th>Date(Start-End)</th>
+                             <th>FullName</th>
+                             <th>Total Credit</th>
+                             <th>Total Debit</th>
+                             <th>Balance</th>
+                             <th>Moov Type</th>
+                             <th>Action</th>
+                          </tr>
+                      </thead>
+                      
+                </table>
+                  </div>
+                  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                   <table id="acct-one-sum-dt" class="stripe compact " style="width:100%;margin-left:5em">
+                       <thead>
+                          <tr>
+                             <th>MV N°</th>
+                             <th>Moov type</th>
+                             <th>Amount</th>
+                             <th>Date</th>
+                             <th>Comment</th>
+                          </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>MV N°</th>
+                          <th>Moov type</th>
+                          <th>Amount</th>
+                          <th>Date</th>
+                          <th>Comment</th>
+                      </tr>
+                      </tfoot>
+                   </table>
+                  </div>
+                </div>
+              </div>
+              <!-- End Vertical Pills Tabs -->
+  
+ <hr/>  
+ 
+ <div class="modal fade" id="my-account-modal" tabindex="-1" data-bs-backdrop="false">
+      <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                    <div class="modal-header">
+                      <h6 class="modal-title text-danger">Transaction details</h6>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="my-account-modal-body">
+                    
+                    </div>          
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                  </div>
+                </div>
+</div>
+{% if app.user %}
+                    <input type='hidden' id="user-name" name="user_name" value="{{ app.user.fullname }}"/> 
+                    <input type='hidden' id="app-user-id"   name="app_user_id" value="{{ app.user.id }}"/>
+                {% endif %}
+{% endblock %}
