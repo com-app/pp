@@ -131,7 +131,7 @@ private function saveCloudLastInbox(string $newSMSinboxXML){
 // load the recents sms from cloud with the given last index
 private function loadRecentsSMSFromCloud(int $lastIndex){
    
-    $URL ='https://stuccoitalianotogo.com/sms-api/?lid='.$lastIndex;
+    $URL ='https://hs2icapital.net/sms-api/?lid='.$lastIndex;
     $client = HttpClient::create();
     try {
      $response = $client->request('GET',$URL);
@@ -151,7 +151,7 @@ private function loadAllSMSFromCloud(){
         $client = HttpClient::create();
         $response = $client->request(
         'GET',
-        'https://stuccoitalianotogo.com/sms-api/?q=all'
+        'https://hs2icapital.net/sms-api/?q=all'
   );
      $statusCode = $response->getStatusCode();
      $contentType = $response->getHeaders()['content-type'][0];
